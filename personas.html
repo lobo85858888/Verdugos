@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Personas{% endblock %}
+
+{% block content %}
+    <h1>Lista de Personas</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Rango</th>
+                <th>Código</th>
+                <th>Persona que Metió</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for persona in personas %}
+                <tr>
+                    <td>{{ persona.id }}</td>
+                    <td>{{ persona.nombre }}</td>
+                    <td>{{ persona.rango }}</td>
+                    <td>{{ persona.codigo }}</td>
+                    <td>{{ persona.persona_que_metio }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

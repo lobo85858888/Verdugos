@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Ascender Persona{% endblock %}
+
+{% block content %}
+    <h1>Ascender Persona</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="nombre_ascensor">Nombre del La Persona Que Asciende al ascendido</label>
+            <input type="text" class="form-control" id="nombre_ascensor" name="nombre_ascensor" required>
+        </div>
+        <div class="form-group">
+            <label for="nombre_ascendido">Nombre de la Persona a Ascender</label>
+            <select class="form-control" id="nombre_ascendido" name="nombre_ascendido" required>
+                {% for persona in personas %}
+                    <option value="{{ persona[1] }}">{{ persona[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nuevo_rango">Nuevo Rango</label>
+            <select class="form-control" id="nuevo_rango" name="nuevo_rango" required>
+                {% for key, value in rangos.items() %}
+                    <option value="{{ key }}">{{ key | capitalize }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Ascender</button>
+    </form>
+{% endblock %}

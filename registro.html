@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Registro de Movimientos{% endblock %}
+
+{% block content %}
+    <h1>Registro de Movimientos</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Acción</th>
+                <th>Nombre</th>
+                <th>Fecha y Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros %}
+                <tr>
+                    <td>{{ registro.id }}</td>
+                    <td>{{ registro.accion }}</td>
+                    <td>{{ registro.nombre }}</td>
+                    <td>{{ registro.fecha_hora }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

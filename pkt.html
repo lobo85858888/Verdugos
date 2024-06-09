@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar Persona{% endblock %}
+
+{% block content %}
+    <h1>Eliminar Persona</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="nombre_eliminar">Nombre de la Persona a Eliminar</label>
+            <select class="form-control" id="nombre_eliminar" name="nombre_eliminar" required>
+                {% for persona in personas %}
+                    <option value="{{ persona.nombre }}">{{ persona.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nombre_eliminador">Nombre del Eliminador</label>
+            <input type="text" class="form-control" id="nombre_eliminador" name="nombre_eliminador" required>
+        </div>
+        <div class="form-group">
+            <label for="motivos">Motivos</label>
+            <textarea class="form-control" id="motivos" name="motivos" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+{% endblock %}

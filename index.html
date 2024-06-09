@@ -3,49 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>{% block title %}{% endblock %}</title>
+    <title>Lista de Personas de V.C.F</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #00ff00; /* Verde fosforita */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-family: 'Arial', sans-serif; /* Cambiada a Arial como fuente común */
+            margin: 0;
+        }
+
+        h1 {
+            margin: 20px 0;
+            color: #ffffff; /* Texto blanco para títulos */
+        }
+
+        table {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombreado sutil */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ffffff;
+        }
+
+        th {
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{{ url_for('mostrar_personas') }}">V.C.F</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('mostrar_personas') }}">Personas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('reclutar') }}">Reclutar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('pkt') }}">PKT</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('registro') }}">Registro</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('ascensos') }}">Ascensos</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container mt-4">
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <div class="alert alert-success" role="alert">
-              {{ messages[0] }}
-            </div>
-          {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <h1>Lista de Personas de V.C.F</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Rango</th>
+            <th>Código</th>
+            <th>Persona que lo Registró</th>
+        </tr>
+        {% for persona in personas %}
+            <tr>
+                <td>{{ persona.nombre }}</td>
+                <td>{{ persona.rango }}</td>
+                <td>{{ persona.codigo }}</td>
+                <td>{{ persona.persona_que_metio }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
