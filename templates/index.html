@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Personas de V.C.F</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #00ff00; /* Verde fosforita */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-family: 'Arial', sans-serif; /* Cambiada a Arial como fuente común */
+            margin: 0;
+        }
+
+        h1 {
+            margin: 20px 0;
+            color: #ffffff; /* Texto blanco para títulos */
+        }
+
+        table {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombreado sutil */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ffffff;
+        }
+
+        th {
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Personas de V.C.F</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Rango</th>
+            <th>Código</th>
+            <th>Persona que lo Registró</th>
+        </tr>
+        {% for persona in personas %}
+            <tr>
+                <td>{{ persona.nombre }}</td>
+                <td>{{ persona.rango }}</td>
+                <td>{{ persona.codigo }}</td>
+                <td>{{ persona.persona_que_metio }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
